@@ -15,7 +15,6 @@ pub struct Record {
     r_data: Vec<u8>,
 }
 
-// RFC6891, 6.1.2.  Wire Format
 pub struct OptRecord {
     pub record: Record,
     udp_payload_size: u16,
@@ -159,7 +158,7 @@ impl Record {
 impl OptRecord {
     pub fn new(udp_payload_size: u16) -> Self {
         let mut rr = Record::new();
-        rr.set_q_name("\0"); //RFC6891, root domain
+        rr.set_q_name("\0");
         rr.set_q_type(QType::Opt);
         rr.q_class = udp_payload_size;
 

@@ -20,7 +20,7 @@ This is a simple DNS client
 * parse OPT record in response
 * DNS ResourceRecord should be implemented as Enum. Currently, I don't know how to handle  
 customized resouce record like OPT for EDNS
+* Async network
 ## Done
 * read configuration from file (or something else), rather than hardcode
 * setting DNS servers
-* Async network

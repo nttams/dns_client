@@ -230,7 +230,7 @@ mod tests {
         assert!(encoded_header_flags[1] == 0);
 
         // case1, all ON
-        // except RCode::NotZone (10, 0b1010), not implemented yet for RCODE=15
+        // except RCode::NXDomain (3, 0b0011), not implemented yet for RCODE=15
         let header_flags = HeaderFlags {
             qr: true,
             op_code: 0b1111,
@@ -241,12 +241,12 @@ mod tests {
             z: true,
             ad: true,
             cd: true,
-            r_code: RCode::NotZone,
+            r_code: RCode::NXDomain,
         };
 
         let encoded_header_flags = header_flags.encode();
         assert!(encoded_header_flags[0] == 0b1111_1111);
-        assert!(encoded_header_flags[1] == 0b1111_1010);
+        assert!(encoded_header_flags[1] == 0b1111_0011);
     }
 
     #[test]

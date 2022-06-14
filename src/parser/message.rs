@@ -1,4 +1,3 @@
-// Please refer RFC1035, section 4. MESSAGES and RFC6895
 // todo: Request and Response should share a same trait? UPDATE: really?
 use super::header::Header;
 use super::question::Question;
@@ -112,7 +111,6 @@ impl Message {
     // quick check if tc bit is ON, no need to parse
     // todo: not tested
     pub fn is_truncated(raw_msg: &Vec<u8>) -> bool {
-        // RFC1035, 4.1.1. Header section format
         let is_truncated = raw_msg[3] & 0b00000010;
         is_truncated == 1
     }

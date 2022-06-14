@@ -132,7 +132,6 @@ impl DomainName {
         (question, parsed_count)
     }
 
-    // RFC1035, 4.1.4. Message compression
     fn is_pointer_domain_name(msg: u8) -> bool {
         (msg & 0b1100_0000) == 0b1100_0000
     }

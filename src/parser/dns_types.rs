@@ -1,7 +1,5 @@
 pub enum QType {
     A,
-    Ns,
-    CName,
     Aaaa,
     Opt,
     FutureUse,
@@ -9,9 +7,6 @@ pub enum QType {
 
 pub enum QClass {
     In,
-    Cs,
-    Ch,
-    Hs,
     FutureUse,
 }
 
@@ -21,13 +16,6 @@ pub enum RCode {
     FormErr,
     ServFail,
     NXDomain,
-    NotImp,
-    Refused,
-    YXDomain,
-    YXRRSet,
-    NXRRSet,
-    NotAuth,
-    NotZone,
     FutureUse,
 }
 
@@ -35,8 +23,6 @@ impl QType {
     pub fn get_value(q_type: Self) -> Option<u16> {
         match q_type {
             QType::A => Some(1),
-            QType::Ns => Some(2),
-            QType::CName => Some(5),
             QType::Aaaa => Some(28),
             QType::Opt => Some(41),
             _ => None,
@@ -46,8 +32,6 @@ impl QType {
     pub fn get_q_type(value: u16) -> Self {
         match value {
             1 => QType::A,
-            2 => QType::Ns,
-            5 => QType::CName,
             28 => QType::Aaaa,
             41 => QType::Opt,
             _ => QType::FutureUse,
@@ -59,9 +43,6 @@ impl QClass {
     pub fn get_value(q_class: Self) -> Option<u16> {
         match q_class {
             QClass::In => Some(1),
-            QClass::Cs => Some(2),
-            QClass::Ch => Some(3),
-            QClass::Hs => Some(4),
             _ => None,
         }
     }
@@ -69,9 +50,6 @@ impl QClass {
     pub fn get_q_class(value: u16) -> Self {
         match value {
             1 => QClass::In,
-            2 => QClass::Cs,
-            3 => QClass::Ch,
-            4 => QClass::Hs,
             _ => QClass::FutureUse,
         }
     }
@@ -84,13 +62,6 @@ impl RCode {
             RCode::FormErr => Some(1),
             RCode::ServFail => Some(2),
             RCode::NXDomain => Some(3),
-            RCode::NotImp => Some(4),
-            RCode::Refused => Some(5),
-            RCode::YXDomain => Some(6),
-            RCode::YXRRSet => Some(7),
-            RCode::NXRRSet => Some(8),
-            RCode::NotAuth => Some(9),
-            RCode::NotZone => Some(10),
             RCode::FutureUse => None,
         }
     }
@@ -103,13 +74,6 @@ impl RCode {
             1 => RCode::FormErr,
             2 => RCode::ServFail,
             3 => RCode::NXDomain,
-            4 => RCode::NotImp,
-            5 => RCode::Refused,
-            6 => RCode::YXDomain,
-            7 => RCode::YXRRSet,
-            8 => RCode::NXRRSet,
-            9 => RCode::NotAuth,
-            10 => RCode::NotZone,
             _ => RCode::FutureUse,
         }
     }
